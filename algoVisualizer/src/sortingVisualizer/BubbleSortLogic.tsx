@@ -6,6 +6,9 @@
  * @param inputArray - The array of numbers to sort
  * @returns The sorted array
  */
+
+//code
+
 function bubbleSort(inputArray: number[]): number[] {
   //! Clone the input array to avoid mutating the original
   const array = [...inputArray];

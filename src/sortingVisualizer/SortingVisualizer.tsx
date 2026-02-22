@@ -43,6 +43,44 @@ const SortingVisualizerLogic = () => {
     setSortedIndices([]);
   };
   
+  //* Helper function to create random array
+  const createRandomArray = (arraySize) => {
+    const newArray = [];
+    for (let i = 0; i < arraySize; i++) {
+      const randomValue = Math.floor(Math.random() * 100) + 15;
+      newArray.push(randomValue);
+    }
+    return newArray;
+  };
+
+  //! handler for randomize
+  const handleRandomizeClick = () => {
+    const newArray = createRandomArray(arraySize);
+    setArray(newArray);
+    setIsPlaying(false);
+    setComparingIndices([]);
+    setSortedIndices([]);
+    
+    //* Regenerate steps if an algorithm was selected
+    if (selectedAlgorithm === 'bubble' || selectedAlgorithm === 'merge') {
+      regenerateSteps(newArray);
+    }
+  };
+
+  //study function to generate steps based on selected algorithm
+  const regenerateSteps = (currentArray: number[]) => {
+    if (selectedAlgorithm == 'bubble') {
+      const sortingSteps = generateBubbleSortSteps(currentArray);
+      setSteps(sortingSteps);
+      setCurrentStepIndex(0);
+      console.log("Regenerated bubble sort steps:", sortingSteps.length);
+    } else if (selectedAlgorithm == 'merge') {
+      // const sortingSteps = mergeSort(currentArray);
+      // setSteps(sortingSteps);
+      // setCurrentStepIndex(0);
+    }
+  };
+
   //* handler for bubble sort
   const handleBubbleSort= () => {
     const sortingSteps = generateBubbleSortSteps(array); //^ Generate all steps
@@ -104,22 +142,12 @@ const SortingVisualizerLogic = () => {
     setArraySize(event.target.value);
   };
 
-  //* Random array creator | numbers from 15 to 414
-  const generateNewArray = () => {
-    const newArray = [];
-    for (let i = 0; i < arraySize; i++) {
-      const randomValue = Math.floor(Math.random() * 100) + 15;
-      newArray.push(randomValue);
-    }
-    setArray(newArray);
-  };
-
   //* listener for arraysizes
   useEffect(() => {
-    generateNewArray();
+    createRandomArray();
   }, [arraySize]);
 
-  //* when you click an sorting button
+  //* when you click a sorting button
   const handleSortTypeClick = (selectedAlgorithm) => {
     switch(selectedAlgorithm) {
       case 'bubble':
@@ -172,10 +200,10 @@ const SortingVisualizerLogic = () => {
       <p>Algorithm: {selectedAlgorithm}</p>
 
         {/* //* buttons */}
-        <button className='btn random' onClick={generateNewArray}>randomize</button>
+        <button className='btn random' onClick={handleRandomizeClick}>randomize</button>
         <button className='btn play' onClick={handlePlayClick}>play</button>
         <button className='btn pause' onClick={handlePauseClick}>pause</button>
-        <button className='btn stop' onClick={handleResetClick}>stop</button>
+        <button className='btn stop' onClick={handleResetClick}>reset</button>
         <button className='btn seekLeft'>seek left</button>
         <button className='btn seekRight'>seek right</button>
 

@@ -144,7 +144,7 @@ const SortingVisualizerLogic = () => {
 
   //* listener for arraysizes
   useEffect(() => {
-    createRandomArray();
+    handleRandomizeClick();
   }, [arraySize]);
 
   //* when you click a sorting button

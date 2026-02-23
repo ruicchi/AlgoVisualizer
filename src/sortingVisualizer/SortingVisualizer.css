@@ -20,6 +20,17 @@
   background-image: url('/path/to/icon.svg');
 }
 
+.btn.seekLeft{
+  /* have to set background image */
+  background-image: url('/path/to/icon.svg');
+}
+
+.btn.seekRight{
+  /* have to set background image */
+  background-image: url('/path/to/icon.svg');
+}
+
+
 .btn.bubble {
   /* have to set background image */
   background-image: url('/path/to/icon.svg');

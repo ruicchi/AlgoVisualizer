@@ -28,86 +28,20 @@ const SortingVisualizerLogic = () => {
     setCurrentStepIndex,
     isPlaying, //study
     setIsPlaying,
-    comparingIndices,
-    setComparingIndices,
+    comparingIndices, //study
+    setComparingIndices, //study
     play,
     pause,
     reset,
     randomize,
-    currentStep,
-    arrayBars
+    seekLeft,
+    seekRight,
+    handleSpeedChange,
+    handleArraySize,
+    handleProgressChange,
+    currentStep, //study
+    arrayBars,
   } = useSortingAnimation(progressSpeed, arraySize, generateNewArray, setArray, selectedAlgorithm, array)
-
-  //study handler for seek left (go to previous step)
-  const handleSeekLeft = () => {
-    if (currentStepIndex > 0) {
-      setCurrentStepIndex(currentStepIndex - 1);
-      setIsPlaying(false); //^ Pause when seeking
-    }
-  };
-
-  //study handler for seek right (go to next step)
-  const handleSeekRight = () => {
-    if (currentStepIndex < steps.length - 1) {
-      setCurrentStepIndex(currentStepIndex + 1);
-      setIsPlaying(false); //^ Pause when seeking
-    }
-  };
-  
-  // //! to delete - Helper function to create random array | outdated
-  // const createRandomArray = (arraySize) => {
-  //   const newArray = [];
-  //   for (let i = 0; i < arraySize; i++) {
-  //     const randomValue = Math.floor(Math.random() * 100) + 15;
-  //     newArray.push(randomValue);
-  //   }
-  //   return newArray;
-  // };
-
-  // //! to refactor - handler for randomize | outdated
-  // const handleRandomizeClick = () => {
-  //   const newArray = createRandomArray(arraySize);
-  //   setArray(newArray);
-  //   setIsPlaying(false);
-  //   setComparingIndices([]);
-  //   setSortedIndices([]);
-    
-  //   //* Regenerate steps if an algorithm was selected
-  //   if (selectedAlgorithm === 'bubble' || selectedAlgorithm === 'merge') {
-  //     regenerateSteps(newArray);
-  //   }
-  // };
-
-  // //* function to generate steps based on selected algorithm
-  // const regenerateSteps = (currentArray: number[]) => {
-  //   if (selectedAlgorithm == 'bubble') {
-  //     const sortingSteps = generateBubbleSortSteps(currentArray);
-  //     setSteps(sortingSteps);
-  //     setCurrentStepIndex(0);
-  //     console.log("Regenerated bubble sort steps:", sortingSteps.length);
-  //   } else if (selectedAlgorithm == 'merge') {
-  //     const sortingSteps = generateMergeSortSteps(currentArray);
-  //     setSteps(sortingSteps);
-  //     setCurrentStepIndex(0);
-  //     console.log("Regenerated merge sort steps:", sortingSteps.length);
-  //   }
-  // };
-
-  //* Handlers for sliders
-  const handleSpeedChange = (event) => {
-    setProgressSpeed(event.target.value);
-  };
-
-  const handleArraySize = (event) => {
-    setArraySize(event.target.value);
-  };
-
-  //study progress slider for steps
-  const handleProgressChange = (event) => {
-    const newStepIndex = parseInt(event.target.value);
-    setCurrentStepIndex(newStepIndex);
-    setIsPlaying(false); //* Pause when manually scrubbing
-  };
 
   //! to delete - listener for arraysizes | outdated
   useEffect(() => {
@@ -147,12 +81,12 @@ const SortingVisualizerLogic = () => {
         <button className='btn stop' onClick={reset}>reset</button>
         <button 
           className='btn seekLeft' 
-          onClick={handleSeekLeft}
+          onClick={seekLeft}
           disabled={currentStepIndex === 0 || steps.length === 0}
         >seek left</button>
         <button 
           className='btn seekRight'
-          onClick={handleSeekRight}
+          onClick={seekRight}
           disabled={currentStepIndex >= steps.length - 1 || steps.length === 0}
         >seek right</button>
 

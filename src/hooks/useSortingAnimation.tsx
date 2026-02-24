@@ -1,4 +1,4 @@
-//# sorting animation hook
+//# sorting animation hook | buttons, 
 
 import { useState, useEffect } from 'react';
 import generateBubbleSortSteps from '../algorithms/bubbleSort';
@@ -8,7 +8,7 @@ import generateMergeSortSteps from '../algorithms/mergeSort';
 export const useSortingAnimation = (progressSpeed, arraySize, generateNewArray, setArray, selectedAlgorithm, array) => {
 
   //* initializes steps, index, and playing state
-  const [steps, setSteps] = useState<Step[]>([]);
+  const [steps, setSteps] = useState([]);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   
@@ -71,6 +71,38 @@ export const useSortingAnimation = (progressSpeed, arraySize, generateNewArray, 
     if (selectedAlgorithm === 'bubble' || selectedAlgorithm === 'merge') {
       regenerateSteps(newArray);
     }
+  };
+
+  //study handler for seek left (go to previous step)
+  const seekLeft = () => {
+    if (currentStepIndex > 0) {
+      setCurrentStepIndex(currentStepIndex - 1);
+      setIsPlaying(false); //^ Pause when seeking
+    }
+  };
+
+  //study handler for seek right (go to next step)
+  const seekRight = () => {
+    if (currentStepIndex < steps.length - 1) {
+      setCurrentStepIndex(currentStepIndex + 1);
+      setIsPlaying(false); //^ Pause when seeking
+    }
+  };
+
+  //* Handlers for sliders
+  const handleSpeedChange = (event) => {
+    setProgressSpeed(event.target.value);
+  };
+
+  const handleArraySize = (event) => {
+    setArraySize(event.target.value);
+  };
+
+  //study progress slider for steps
+  const handleProgressChange = (event) => {
+    const newStepIndex = parseInt(event.target.value);
+    setCurrentStepIndex(newStepIndex);
+    setIsPlaying(false); //* Pause when manually scrubbing
   };
 
    const regenerateSteps = (currentArray: number[]) => {
@@ -144,6 +176,11 @@ export const useSortingAnimation = (progressSpeed, arraySize, generateNewArray, 
     play,
     pause,
     reset,
+    seekLeft,
+    seekRight,
+    handleSpeedChange,
+    handleArraySize,
+    handleProgressChange,
     randomize,
     currentStep,
     arrayBars

@@ -1,5 +1,4 @@
 //# merge sort algorithm
-//! to be finalized, merge sort should store unchosen elements of array | update visualizer also
 //study
 
 function generateMergeSortSteps(inputArray: number[]): Step[] {

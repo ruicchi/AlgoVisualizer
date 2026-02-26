@@ -92,6 +92,18 @@ const SortingVisualizerLogic = () => {
         >
           merge sort
         </button>
+        <button 
+          className={`btn quick`}
+          onClick={() => handleSortTypeClick('quick', array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying)}
+        >
+          quick sort
+        </button>
+        <button 
+          className={`btn selection`}
+          onClick={() => handleSortTypeClick('selection', array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying)}
+        >
+          selection sort
+        </button>
         
       {/* //study slider for progress through steps */}
       <div className='slider progress'>

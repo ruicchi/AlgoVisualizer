@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import generateBubbleSortSteps from '../algorithms/bubbleSort';
 import generateMergeSortSteps from '../algorithms/mergeSort';
+import generateQuickSortSteps from '../algorithms/quickSort';
+import generateSelectionSortSteps from '../algorithms/selectionSort';
 
 //* hook for animations
 export const useSortingAnimation = (
@@ -68,6 +70,30 @@ export const useSortingAnimation = (
     setSortedIndices([]);
   };
 
+  const regenerateSteps = (currentArray: number[]) => {
+    if (selectedAlgorithm == 'bubble') {
+      const sortingSteps = generateBubbleSortSteps(currentArray);
+      setSteps(sortingSteps);
+      setCurrentStepIndex(0);
+      console.log("Regenerated bubble sort steps:", sortingSteps.length);
+    } else if (selectedAlgorithm == 'merge') {
+      const sortingSteps = generateMergeSortSteps(currentArray);
+      setSteps(sortingSteps);
+      setCurrentStepIndex(0);
+      console.log("Regenerated merge sort steps:", sortingSteps.length);
+    } else if (selectedAlgorithm == 'quick') {
+      const sortingSteps = generateQuickSortSteps(currentArray);
+      setSteps(sortingSteps);
+      setCurrentStepIndex(0);
+      console.log("Regenerated quick sort steps:", sortingSteps.length);
+    } else if (selectedAlgorithm == 'selection') {
+      const sortingSteps = generateSelectionSortSteps(currentArray);
+      setSteps(sortingSteps);
+      setCurrentStepIndex(0);
+      console.log("Regenerated selection sort steps:", sortingSteps.length);
+    }
+  };
+
   //*handler for randomize
   const randomize = () => {
     const newArray = generateNewArray(arraySize);
@@ -77,7 +103,10 @@ export const useSortingAnimation = (
     setSortedIndices([]);
     
     //* Regenerate steps if an algorithm was selected
-    if (selectedAlgorithm === 'bubble' || selectedAlgorithm === 'merge') {
+    if (selectedAlgorithm === 'bubble' || 
+        selectedAlgorithm === 'merge' || 
+        selectedAlgorithm === 'quick' || 
+        selectedAlgorithm === 'selection') {
       regenerateSteps(newArray);
     }
   };
@@ -117,20 +146,6 @@ export const useSortingAnimation = (
     const newStepIndex = parseInt(event.target.value);
     setCurrentStepIndex(newStepIndex);
     setIsPlaying(false); //* Pause when manually scrubbing
-  };
-
-   const regenerateSteps = (currentArray: number[]) => {
-    if (selectedAlgorithm == 'bubble') {
-      const sortingSteps = generateBubbleSortSteps(currentArray);
-      setSteps(sortingSteps);
-      setCurrentStepIndex(0);
-      console.log("Regenerated bubble sort steps:", sortingSteps.length);
-    } else if (selectedAlgorithm == 'merge') {
-      const sortingSteps = generateMergeSortSteps(currentArray);
-      setSteps(sortingSteps);
-      setCurrentStepIndex(0);
-      console.log("Regenerated merge sort steps:", sortingSteps.length);
-    }
   };
 
   //* gets the current step data

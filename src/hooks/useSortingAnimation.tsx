@@ -181,16 +181,16 @@ export const useSortingAnimation = (
   //study array mapper to have bars on numbers with index
   const arrayBars = array.map((value, index) => {
       
-      let barColor = '#00a4db';  //* Default blue
+      let barColor = '#00a4db';  //* default blue
   
       if (sortedIndices.includes(index)) {
-        barColor = '#10b981';  //* Green for sorted
+        barColor = '#10b981';  //* green for sorted
       } else if (comparingIndices.includes(index)) {
-        barColor = '#f59e0b';  //* Orang for comparing
+        barColor = '#f59e0b';  //* orang for comparing
       } else if (swappingIndices && swappingIndices.includes(index)) {
-        barColor = '#ef4444';  //* Red for swapping
+        barColor = '#ef4444';  //* red for swapping
       } else if (activeIndices && activeIndices.includes(index)) {
-        barColor = '#8b5cf6';  //* Purple for active subarray
+        barColor = '#8b5cf6';  //* purple for active subarray
       }
 
       return (

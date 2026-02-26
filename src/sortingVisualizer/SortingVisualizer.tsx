@@ -70,6 +70,7 @@ const SortingVisualizerLogic = () => {
           {arrayBars}
         </div>
 
+      {/* //* algorithm selector */}
         <div className="sortingButtons">
           <button
             className={`btn bubble`}
@@ -106,6 +107,15 @@ const SortingVisualizerLogic = () => {
       <h1>Sorting Visualizer</h1>
       <p>Algorithm: {displayName}</p>
 
+      {/* //* color legends */}
+      <div className='colorLegends'>
+        <span style={{ color: '#00a4db', marginRight: 10}}>■ Default</span>
+        <span style={{ color: '#f59e0b', marginRight: 10}}>■ Comparing</span>
+        <span style={{ color: '#CD3A3A', marginRight: 10 }}>■ Swapping</span>
+        <span style={{ color: '#8b5cf6', marginRight: 10 }}>■ Active Subarray</span>
+        <span style={{ color: '#0E9F6F'}}>■ Sorted</span>
+      </div>
+
         {/* //* buttons */}
         <div className="controlButtons">
           <button 
@@ -131,8 +141,6 @@ const SortingVisualizerLogic = () => {
 
         {/* //debug: Show array as text */}
         <p>Array: {JSON.stringify(array)}</p>
-
-        {/* //* algorithm selector | vertical on right */}
 
       {/* //study slider for progress through steps */}
       <div className='rangeSliders'>

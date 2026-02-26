@@ -63,6 +63,14 @@
   top: 230px;
 }
 
+.btn.heap {
+  /* have to set background image */
+  background-image: url('/path/to/icon.svg');
+  position: absolute;
+  right: 20px;
+  top: 270px;
+}
+
 .arrayContainer {
   display: flex; /* note: Makes the container a flexbox - allows flexible arrangement of child elements */
   align-items: flex-end; /* note: Aligns all bars to the bottom of the container (so they grow upward) */

@@ -104,6 +104,12 @@ const SortingVisualizerLogic = () => {
         >
           selection sort
         </button>
+        <button 
+          className={`btn heap`}
+          onClick={() => handleSortTypeClick('heap', array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying)}
+        >
+          heap sort
+        </button>
         
       {/* //study slider for progress through steps */}
       <div className='slider progress'>

@@ -5,6 +5,7 @@ import generateBubbleSortSteps from '../algorithms/bubbleSort';
 import generateMergeSortSteps from '../algorithms/mergeSort';
 import generateQuickSortSteps from '../algorithms/quickSort';
 import generateSelectionSortSteps from '../algorithms/selectionSort';
+import generateHeapSortSteps from '../algorithms/heapSort';
 
 //* hook for animations
 export const useSortingAnimation = (
@@ -91,6 +92,11 @@ export const useSortingAnimation = (
       setSteps(sortingSteps);
       setCurrentStepIndex(0);
       console.log("Regenerated selection sort steps:", sortingSteps.length);
+    } else if (selectedAlgorithm == 'heap') {
+      const sortingSteps = generateHeapSortSteps(currentArray);
+      setSteps(sortingSteps);
+      setCurrentStepIndex(0);
+      console.log("Regenerated heap sort steps:", sortingSteps.length);
     }
   };
 
@@ -106,7 +112,8 @@ export const useSortingAnimation = (
     if (selectedAlgorithm === 'bubble' || 
         selectedAlgorithm === 'merge' || 
         selectedAlgorithm === 'quick' || 
-        selectedAlgorithm === 'selection') {
+        selectedAlgorithm === 'selection' || 
+        selectedAlgorithm === 'heap') {
       regenerateSteps(newArray);
     }
   };

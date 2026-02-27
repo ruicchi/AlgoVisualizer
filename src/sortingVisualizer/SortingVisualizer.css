@@ -16,13 +16,18 @@
 .btn.playPause.play:hover {
   background: #27ae60;
   color: white;
-  transition: background 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.controlButtons .btn:not(.playPause):active {
+  background: hsla(0, 0%, 95%, 0.301); 
+  transition: 0.05s ease-out, transform 0.5s ease-out;
 }
 
 .btn.playPause.pause:hover {
   background: #e74c3c;
   color: white;
-  transition: background 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .sortingButtons {
@@ -64,7 +69,9 @@
 .btn.merge:focus,
 .btn.quick:focus,
 .btn.selection:focus,
-.btn.heap:focus {
+.btn.heap:focus,
+.btn.insertion:focus,
+.btn.radix:focus {
   background: #9F9F9F;
   transform: translateY(-2px) scale(1.04);
   transition: 
@@ -117,4 +124,24 @@ input[type="range"] {
   border-radius: 5px;
   margin: 8px 5px;
   transition: left 0.3s ease-in-out;
+}
+
+.githubBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  border-radius: 500px;
+  width: 50px;
+  height: 50px;
+}
+
+.githubBtn img {
+  border-radius: 100px;
+  object-fit: contain;
+  transition: 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.githubBtn img:hover {
+  transform: translateY(-2px) scale(1.04);
 }

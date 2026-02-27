@@ -129,6 +129,16 @@ const SortingVisualizerLogic = () => {
         <span style={{ color: '#8b5cf6', marginRight: 10 }}>■ Active Subarray</span>
         <span style={{ color: '#0E9F6F'}}>■ Sorted</span>
       </div>
+      
+      {/* //* noopener noreferrer for security, target blank for new window */}
+      <a
+        href="https://github.com/ruicchi/sorting-visualizer"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="githubBtn"
+      >
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub"/>
+      </a>
 
         {/* //* buttons */}
         <div className="controlButtons">

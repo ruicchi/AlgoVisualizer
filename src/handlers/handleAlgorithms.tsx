@@ -6,6 +6,7 @@ import generateMergeSortSteps from '../algorithms/mergeSort';
 import generateQuickSortSteps from '../algorithms/quickSort';
 import generateSelectionSortSteps from '../algorithms/selectionSort';
 import generateHeapSortSteps from '../algorithms/heapSort';
+import generateInsertionSortSteps from '../algorithms/insertionSort';
 
 //* when you click a sorting button
 export const handleSortTypeClick = (
@@ -31,6 +32,9 @@ export const handleSortTypeClick = (
       break;
     case 'heap':
       handleHeapSort(array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying);
+      break;
+    case 'insertion':
+      handleInsertionSort(array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying);
       break;
   }
 };
@@ -125,6 +129,26 @@ const handleHeapSort = (
 ) => {
   const sortingSteps = generateHeapSortSteps(array); //^ Generate all steps
   setSelectedAlgorithm('heap'); //^ sets selected algorithm
+
+  setSteps(sortingSteps); //^ Store steps in state
+
+  //* resets to beginning
+  setCurrentStepIndex(0);
+  setIsPlaying(false);
+
+  console.log("Generated steps:", sortingSteps.length);
+};
+
+//* handler for insertion sort
+const handleInsertionSort = (
+  array,
+  setSelectedAlgorithm,
+  setSteps,
+  setCurrentStepIndex,
+  setIsPlaying
+) => {
+  const sortingSteps = generateInsertionSortSteps(array); //^ Generate all steps
+  setSelectedAlgorithm('insertion'); //^ sets selected algorithm
 
   setSteps(sortingSteps); //^ Store steps in state
 

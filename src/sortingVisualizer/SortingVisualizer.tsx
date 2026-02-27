@@ -55,7 +55,8 @@ const SortingVisualizerLogic = () => {
     merge: "Merge Sort",
     quick: "Quick Sort",
     selection: "Selection Sort",
-    heap: "Heap Sort"
+    heap: "Heap Sort",
+    insertion: "Insertion Sort"
   };
 
   //* mapper for display names
@@ -101,6 +102,12 @@ const SortingVisualizerLogic = () => {
             onClick={() => handleSortTypeClick('heap', array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying)}
           >
             Heap Sort
+          </button>
+          <button 
+            className={`btn insertion`}
+            onClick={() => handleSortTypeClick('insertion', array, setSelectedAlgorithm, setSteps, setCurrentStepIndex, setIsPlaying)}
+          >
+            Insertion Sort
           </button>
         </div>
 

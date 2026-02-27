@@ -2,7 +2,7 @@
 
 function generateInsertionSortSteps(inputArray: number[]): Step[] {
   const array = [...inputArray];
-  const steps: Step[] = [];
+  const steps = [];
 
   //* Initial state
   steps.push({

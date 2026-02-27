@@ -2,7 +2,7 @@
 
 function generateSelectionSortSteps(inputArray: number[]): Step[] {
   const array = [...inputArray];
-  const steps: Step[] = [];
+  const steps = [];
   const sortedIndices: number[] = [];
 
   // Push initial state
